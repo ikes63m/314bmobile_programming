@@ -1,82 +1,135 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/configs/colors.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+void main() {
+  runApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Login Demo',
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.deepOrangeAccent,
-          title: const Text(
-            'LOGIN SCREEN',
-            style: TextStyle(color: Colors.yellowAccent, fontSize: 20),
+        backgroundColor: Colors.white,
+        // appBar: AppBar(
+        //   backgroundColor: Colors.deepOrangeAccent,
+        //   title: Text("Logging Page", style: TextStyle(color: Colors.white)),
+        //   centerTitle: true,
+        // ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Text(
+                //   "Jumia Marketplace",
+                //   style: TextStyle(
+                //     color: Colors.blue,
+                //     fontSize: 30,
+                //     fontWeight: FontWeight.w800,
+                //   ),
+                // ),
+                Image.asset('assets/jumia_logo.png', width: 200),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(25, 0, 20, 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Enter Username",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hint: Text("Email or Phone Number"),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      prefixIcon: Icon(Icons.person),
+                      suffix: Icon(Icons.check_circle, color: Colors.green),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(25, 0, 20, 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Enter Password",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hint: Text("PIN or Password"),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      prefixIcon: Icon(Icons.lock),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                // MaterialButton(
+                //   onPressed: () {},
+                //   child: Text("Login", style: TextStyle(color: Colors.white)),
+                //   color: Colors.deepOrangeAccent,
+
+                // ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 50,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: primarycolor,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                      Padding(padding: const EdgeInsets.fromLTRB(10, 5, 10, 0)),
+                      SizedBox(height: 16),
+                      Row(
+                        children: [
+                          Text("Don't have an account? "),
+                          SizedBox(width: 5),
+                          Text(
+                            "Sign Up",
+                            style: TextStyle(color: Colors.amber),
+                          ),
+                          Text("Forgot Password?"),
+                          SizedBox(width: 5),
+                          Text("Reset", style: TextStyle(color: Colors.amber)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        body: const Padding(padding: EdgeInsets.all(16.0), child: LoginForm()),
       ),
-    );
-  }
-}
-
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
-
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Text(
-          'Login Screen',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 16),
-        const Text('Username'),
-        TextField(controller: _usernameController),
-        const SizedBox(height: 12),
-        const Text('Password'),
-        TextField(controller: _passwordController, obscureText: true),
-        const SizedBox(height: 30),
-        ElevatedButton(
-          onPressed: () {
-            // TODO: handle login
-            final username = _usernameController.text;
-            final password = _passwordController.text;
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Username: $username, Password: $password'),
-              ),
-            );
-          },
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.blueGrey),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.0),
-            child: Text('Login'),
-          ),
-        ),
-      ],
-    );
-  }
+    ),
+  );
 }
