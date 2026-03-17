@@ -179,30 +179,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
-                  const SizedBox(height: 4),
-
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 3,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent.withOpacity(0.20),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: Colors.blueAccent.withOpacity(0.40),
-                      ),
-                    ),
-                    child: const Text(
-                      'Free Plan',
-                      style: TextStyle(
-                        color: Colors.blueAccent,
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
